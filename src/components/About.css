@@ -1,0 +1,25 @@
+.about-heading{
+    margin-bottom: 2vh;
+    margin-top: 12vh;
+}
+.contact-container{
+    margin-top: 5vh;
+}
+.contact-item{
+    margin-left: 2vw;
+}
+
+svg{
+    background-color: transparent;
+    border-radius: 15px;
+    transition: background-color 0.5s ease;
+}
+
+svg:hover{
+    background-color: #DAA520;
+}
+
+#about{
+    /* border-radius: 100px; */
+    background-color: #ededed;
+}

@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import Reacts, { useRef } from "react";
+import Profile from "./components/Profile";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./components/Navbar"
+import Project from "./components/Project";
+import { useState } from "react";
+import Credentials from "./components/Credentials";
+import About from "./components/About";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  const [frame, setFrame] = useState(Project)
+
+  const project = useRef(null)
+  const education = useRef(null)
+
+  const scrollToSection = (elementRef) => [
+    window.scrollTo({
+      top: elementRef.current.offsetTop,
+      behavior: "smooth"
+    })
+  ]
+  // const handleFrame = (newFrame) => {
+  //   setFrame(newFrame)
+  //   scrollT
+  // }
+  return(
+    <>
+      <Navbar/>
+      <Profile setFrame={scrollToSection}/>
+      <About />
+      <Project ref={project}></Project>
+      <Credentials />
+    </>
+    
+  )
 }
 
 export default App;
