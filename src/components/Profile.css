@@ -2,10 +2,33 @@ html, body{
     overflow-x:hidden;
 }
 
-h1{
-    font-size: 3em;
+#typing-animation{
+    height: 45vh;
+    color: "";
 }
 
-h2{
-    font-size: 2em;
+.img-fluid{
+    margin-left:'2vw';
+    border-radius: '20%';
+}
+
+@media (max-width: 1280px) {
+    #typing-animation{
+        font-size: 12px;
+        height: 35vh;
+    }
+}
+
+@media (max-width: 768px) {
+    #typing-animation{
+        font-size: 10px;
+        height: 30vh;
+    }
+}
+
+@media (max-width: 480px) {
+    #typing-animation{
+        font-size: 6px;
+        height: 20vh;
+    }
 }

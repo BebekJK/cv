@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import ExampleCarouselImage from './ExampleCarouselImage';
 import './carousel.css';
@@ -45,14 +45,21 @@ const Project = () => {
     return(
         <div id="project" style={{
             height:"100vh",
-            width:"100vw",
+            width: "100vw",
             backgroundColor:"#ededed",
             // background: "linear-gradient(90deg, rgba(51,51,51,1) 0%, rgba(0,90,103,1) 100%)"   
             display: "flex",
             alignContent: "center",
             justifyContent: "center"
         }}>
-            <div style={{borderRadius:"2vw", width: "40vw", height:"80vh", margin: "auto", padding: "7vh 0vw 10vh 0vw", backgroundColor: "rgba(255,255,255,0.5)"}}>
+            <div style={{
+                            borderRadius:"2vw",
+                            width: "40vw",
+                            height:"80vh",
+                            margin: "auto",
+                            padding: "7vh 0vw 10vh 0vw",
+                            backgroundColor: "rgba(255,255,255,0.5)"
+                        }}>
                 <h2 style={{textAlign: "center", color:"#333", paddingBottom: "3vh"}}>  My Projects:</h2>
                 <MyCarousel />
             </div>

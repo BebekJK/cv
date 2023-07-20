@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./About.css"
 
 const aboutText = {
@@ -53,13 +53,37 @@ const aboutText = {
 }
 
 const About = () => {
+    const [screenSize, setScreenSize] = useState(getCurrentDimension());
+
+  	function getCurrentDimension(){
+    	return {
+      		width: window.innerWidth,
+      		height: window.innerHeight
+    	}
+  	}
+  
+  	useEffect(() => {
+    		const updateDimension = () => {
+      			setScreenSize(getCurrentDimension())
+    		}
+    		window.addEventListener('resize', updateDimension);
+    
+		
+    		return(() => {
+        		window.removeEventListener('resize', updateDimension);
+    		})
+  	}, [screenSize])
+
     return(
-        <div id="about" style={{width:"100vw", height:"100vh", display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <div id="about" style={{
+            width:"100vw",
+            height:screenSize.width > 1280? "100vh" : screenSize.width > 768? "100vh": "100vh",
+            display: "flex", justifyContent: "center", alignItems: "center"}}>
             <div style={{
-                width: "40vw",
-                height:"80vh",
+                width: screenSize.width >= 1280? "40vw": screenSize.width > 768? "60vw": "70vw",
+                height: screenSize.width >= 1280? "80vh": screenSize.width > 768? "70vh": screenSize.width > 480? "60vh": "350px",
                 borderRadius: "3vw",
-                padding: "3vh 5vw",
+                padding: screenSize.width >= 1280? "3vh 5vw": "3vh 7vw",
                 backgroundColor: "rgba(255,255,255,0.6)"
             }}>
                 <h2 className="about-heading">About Me</h2>
