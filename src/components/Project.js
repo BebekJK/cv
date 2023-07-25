@@ -20,7 +20,7 @@ const projects = [
         image: project_2
     }
 ]
-const MyCarousel = () => {
+const MyCarousel = ({screenSize}) => {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
@@ -32,7 +32,7 @@ const MyCarousel = () => {
         {projects.map((project, index) => {
             return(
                 <Carousel.Item>
-                    <ExampleCarouselImage title={project.title} src={project.image} desc={project.description} link={project.projectLink} skills={project.skills}/>
+                    <ExampleCarouselImage title={project.title} src={project.image} desc={project.description} link={project.projectLink} skills={project.skills} screenSize={screenSize}/>
                 </Carousel.Item>
             )
         })}
@@ -42,6 +42,29 @@ const MyCarousel = () => {
 
 
 const Project = () => {
+
+    const [screenSize, setScreenSize] = useState(getCurrentDimension());
+
+  	function getCurrentDimension(){
+    	return {
+      		width: window.innerWidth,
+      		height: window.innerHeight
+    	}
+  	}
+  
+  	useEffect(() => {
+    		const updateDimension = () => {
+      			setScreenSize(getCurrentDimension())
+    		}
+    		window.addEventListener('resize', updateDimension);
+    
+		
+    		return(() => {
+        		window.removeEventListener('resize', updateDimension);
+    		})
+  	}, [screenSize])
+
+
     return(
         <div id="project" style={{
             height:"100vh",
@@ -54,14 +77,14 @@ const Project = () => {
         }}>
             <div style={{
                             borderRadius:"2vw",
-                            width: "40vw",
-                            height:"80vh",
+                            width: screenSize.width>=1280?"40vw": screenSize.width>=768? "60vw": "70vw",
+                            height: screenSize.width>=1280?"90vh": screenSize.width>=768? "70vh": "45vh",
                             margin: "auto",
-                            padding: "7vh 0vw 10vh 0vw",
+                            padding: screenSize.width>=480? "7vh 0vw 10vh 0vw": "3vh 0vw 5vh 0vw",
                             backgroundColor: "rgba(255,255,255,0.5)"
                         }}>
-                <h2 style={{textAlign: "center", color:"#333", paddingBottom: "3vh"}}>  My Projects:</h2>
-                <MyCarousel />
+                <h2 style={{textAlign: "center", color:"#333", paddingBottom: screenSize.width>=480?"3vh" : "1vh", fontSize: screenSize.width>=480?"32px":"18px",}}>  My Projects:</h2>
+                <MyCarousel screenSize={screenSize}/>
             </div>
             
         </div>
