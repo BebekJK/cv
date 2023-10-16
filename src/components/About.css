@@ -1,56 +1,15 @@
-.about-heading{
-    margin-bottom: 2vh;
-    margin-top: 12vh;
-}
-.contact-container{
-    margin-top: 5vh;
-}
-.contact-item{
-    margin-left: 2vw;
+#about, #credentials, #project{
+    transition: all ease-in-out;
+    animation: switch 1s;
 }
 
-svg{
-    background-color: transparent;
-    border-radius: 15px;
-    transition: background-color 0.5s ease;
-}
-
-svg:hover{
-    background-color: #DAA520;
-}
-
-#about{
-    /* border-radius: 100px; */
-    background-color: #ededed;
-}
-
-@media (max-width: 1280px){
-    .about-heading{
-        margin-top: 9vh;
+@keyframes switch {
+    from{
+        transform: translateY(50px);
+        opacity: 0;
     }
-}
-
-@media (max-width: 768px){
-    .about-heading{
-        margin-top: 6vh;
+    to{
+        transform: translate(0px);
+        opacity: 1;
     }
-}
-
-@media (max-width: 480px){
-    .about-heading{
-        margin-top: 3vh;
-    }
-    #about-intro{
-        font-size: 10px;
-    }
-    svg{
-        width: 30px;
-    }
-    .contact-container{
-        margin-top: 2vh;
-    }
-    .about-heading{
-        font-size: 18px;
-    }
-
 }

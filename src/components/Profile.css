@@ -1,34 +1,32 @@
-html, body{
-    overflow-x:hidden;
+#profile-image{
+    transition: all ease-in;
+    animation: in-right 1s;
 }
 
-#typing-animation{
-    height: 45vh;
-    color: "";
-}
+@keyframes in-right{
 
-.img-fluid{
-    margin-left:'2vw';
-    border-radius: '20%';
-}
-
-@media (max-width: 1280px) {
-    #typing-animation{
-        font-size: 12px;
-        height: 35vh;
+    from{
+        transform: translateX(200px);
+        opacity: 0.5;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
     }
 }
 
-@media (max-width: 768px) {
-    #typing-animation{
-        font-size: 10px;
-        height: 30vh;
-    }
+#profile-about{
+    transition: all ease-in;
+    animation: in-left 1s;
 }
 
-@media (max-width: 480px) {
-    #typing-animation{
-        font-size: 6px;
-        height: 20vh;
+@keyframes in-left{
+    from{
+        transform: translateX(-200px);
+        opacity: 0.5;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
     }
 }

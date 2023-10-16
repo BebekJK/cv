@@ -1,36 +1,17 @@
-import Reacts, { useRef } from "react";
 import Profile from "./components/Profile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/Navbar"
-import Project from "./components/Project";
-import { useState } from "react";
-import Credentials from "./components/Credentials";
-import About from "./components/About";
+import Combination from "./components/combination";
+import Grids from "./components/grids";
 
 const App = () => {
-  const [frame, setFrame] = useState(Project)
-
-  const project = useRef(null)
-  const education = useRef(null)
-
-  const scrollToSection = (elementRef) => [
-    window.scrollTo({
-      top: elementRef.current.offsetTop,
-      behavior: "smooth"
-    })
-  ]
-  // const handleFrame = (newFrame) => {
-  //   setFrame(newFrame)
-  //   scrollT
-  // }
   return(
-    <>
-      <Navbar/>
-      <Profile setFrame={scrollToSection}/>
-      <About />
-      <Project ref={project}></Project>
-      <Credentials />
-    </>
+    <div id='moving-bg'>
+        <Grids className="z-[-3]" dim={{width: window.innerWidth, height: window.innerWidth}}/>
+        <Navbar className="sticky"/>
+        <Profile/>
+        <Combination className="z-[10]"/>
+    </div>
     
   )
 }

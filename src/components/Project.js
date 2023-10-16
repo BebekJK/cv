@@ -1,90 +1,48 @@
-import { useState, useEffect } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-import ExampleCarouselImage from './ExampleCarouselImage';
-import './carousel.css';
-import project_1 from '../assets/project_1.png'
-import project_2 from '../assets/project_2.png'
+import { useState } from 'react';
+
 const projects = [
     {
-        title: '2048 the Game',
+        title: '2048 GAME CLONE',
         description: 'This project is a copy of the famous \'2048\' game. Made using Javascript DOM as a practice to the world of Software Engineering',
         skills: 'HTML, CSS, JavaScript',
         projectLink: 'https://github.com/BebekJK/2048',
-        image: project_1
     },
     {
-        title: 'Image Compressor',
+        title: 'IMAGE COMPRESSOR',
         description: 'An implementation for K-Means Clustering algorithm of Unsupervised Learning. This project compresses Image to only have small amount of different colors by grouping similar colors',
         skills: 'Python, Machine Learning, Unsupervised Learning',
         projectLink: 'https://github.com/BebekJK/k-means',
-        image: project_2
+    },
+    {
+        title: 'MEDICAL ABSTRACT TEXT CLASSIFIER',
+        description: 'A TensorFlow natural language processing (NLP) project to categorize 5 sections of medical abstract sentences based on “PubMed 200k RCT: a Dataset for Sequential Sentence Classification in Medical Abstracts”, Franck Dernoncourt, Ji Young Lee',
+        skills: 'Machine Learning, Natural Language Processing, TensorFlow',
+        projectLink: 'https://www.kaggle.com/code/bebekjk/skimlit',
     }
 ]
-const MyCarousel = ({screenSize}) => {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
-
-  return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
-        {projects.map((project, index) => {
-            return(
-                <Carousel.Item>
-                    <ExampleCarouselImage title={project.title} src={project.image} desc={project.description} link={project.projectLink} skills={project.skills} screenSize={screenSize}/>
-                </Carousel.Item>
-            )
-        })}
-    </Carousel>
-  );
-}
-
 
 const Project = () => {
 
-    const [screenSize, setScreenSize] = useState(getCurrentDimension());
-
-  	function getCurrentDimension(){
-    	return {
-      		width: window.innerWidth,
-      		height: window.innerHeight
-    	}
-  	}
-  
-  	useEffect(() => {
-    		const updateDimension = () => {
-      			setScreenSize(getCurrentDimension())
-    		}
-    		window.addEventListener('resize', updateDimension);
-    
-		
-    		return(() => {
-        		window.removeEventListener('resize', updateDimension);
-    		})
-  	}, [screenSize])
-
+    const [isHovered, setIsHovered] = useState(-1)
+    const handleMouseEnter = (index) => {setIsHovered(index)}
+    const handleMouseLeave = () => {setIsHovered(-1)}
 
     return(
-        <div id="project" style={{
-            height:"100vh",
-            width: "100vw",
-            backgroundColor:"#ededed",
-            // background: "linear-gradient(90deg, rgba(51,51,51,1) 0%, rgba(0,90,103,1) 100%)"   
-            display: "flex",
-            alignContent: "center",
-            justifyContent: "center"
-        }}>
-            <div style={{
-                            borderRadius:"2vw",
-                            width: screenSize.width>=1280?"40vw": screenSize.width>=768? "60vw": "70vw",
-                            height: screenSize.width>=1280?"90vh": screenSize.width>=768? "70vh": "45vh",
-                            margin: "auto",
-                            padding: screenSize.width>=480? "7vh 0vw 10vh 0vw": "3vh 0vw 5vh 0vw",
-                            backgroundColor: "rgba(255,255,255,0.5)"
-                        }}>
-                <h2 style={{textAlign: "center", color:"#333", paddingBottom: screenSize.width>=480?"3vh" : "1vh", fontSize: screenSize.width>=480?"32px":"18px",}}>  My Projects:</h2>
-                <MyCarousel screenSize={screenSize}/>
+        <div id="project" className='bg-transparent w-full h-full px-8 py-8'>
+            <h2 className='text-[#B000B0] font-bold'>RECENT PROJECTS</h2>
+            {/* <MyCarousel screenSize={screenSize}/> */}
+            <div className='flex flex-col justify-evenly h-[90%] px-1 py-2'>
+                {projects.map((project, index) => {
+                    return(
+                        <a href={project.projectLink} target='_blank' className={'rounded-lg px-3 py-2 shadow-[0px_5px_10px_-5px_rgb(0,0,0)] no-underline text-white transition-all duration-500 ease-in-out ' + (isHovered === index? "-translate-x-2 -translate-y-2 bg-[#800080] shadow-[5px_5px_15px_0px_rgb(16,0,16)]":"")}
+                            onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave()}>
+                            <div className={'text-md font-bold text-white'}>{project.title}</div>
+                            <div className='text-xs font-light'>{project.description}</div>
+                            <div className='h-3'></div>
+                            <div className='text-xs font-light'>Skills: {project.skills}</div>
+                        </a>
+                    )
+                })}
             </div>
             
         </div>
