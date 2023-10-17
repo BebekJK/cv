@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/cv/static/css/main.8e913bd9.css",
-    "main.js": "/cv/static/js/main.b432549b.js",
+    "main.css": "/cv/static/css/main.d356777e.css",
+    "main.js": "/cv/static/js/main.b019a1ad.js",
     "static/js/787.a71561b8.chunk.js": "/cv/static/js/787.a71561b8.chunk.js",
     "static/media/Resume_Kevin_Jonathan_Kusnomo.pdf": "/cv/static/media/Resume_Kevin_Jonathan_Kusnomo.1ab4613c0a90fa0e9da0.pdf",
     "static/media/image_6_1.png": "/cv/static/media/image_6_1.fa277a19947269f5f6a1.png",
     "index.html": "/cv/index.html",
-    "main.8e913bd9.css.map": "/cv/static/css/main.8e913bd9.css.map",
-    "main.b432549b.js.map": "/cv/static/js/main.b432549b.js.map",
+    "main.d356777e.css.map": "/cv/static/css/main.d356777e.css.map",
+    "main.b019a1ad.js.map": "/cv/static/js/main.b019a1ad.js.map",
     "787.a71561b8.chunk.js.map": "/cv/static/js/787.a71561b8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8e913bd9.css",
-    "static/js/main.b432549b.js"
+    "static/css/main.d356777e.css",
+    "static/js/main.b019a1ad.js"
   ]
 }
