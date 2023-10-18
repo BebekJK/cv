@@ -1,22 +1,13 @@
-const Grids = ({dim}) => {
-    const gridBox = []
-
-    const setBox = () => {
-        let col = 10, boxSize = Math.floor(window.innerWidth / col) - 5;
-        let row = window.innerHeight / boxSize;
-        for(let i=0; i<row; i++){
-            for(let j=0; j<col; j++){
-                let cls = `bg-zinc-900 border-transparent mx-[2px] my-[2px] w-[128px] h-[128px]`
-                gridBox.push((
-                    <div className={cls}></div>
-                ))
-            }
-        }
-    }
-    setBox()
+const Grids = ({windowSize}) => {
+    let col = 8;
+    let marg = 2;
+    let boxSize = Math.floor((windowSize.innerWidth - marg*(col+1)) / col);
+    let row = 2.3 *  windowSize.innerHeight / boxSize;
+    let cls = `bg-zinc-900 border-transparent`;
+    const gridBox = Array.from({length: row}, () => Array(col).fill(<div className={cls} style={{width: `${boxSize}px`, height: `${boxSize}px`, margin: `${marg}px 0px`}}></div>))
 
     return (
-        <div className="w-full h-full fixed flex flex-row flex-wrap items-center justify-center overflow-hidden">
+        <div className="w-full h-full fixed flex flex-row flex-wrap justify-evenly">
             {
                 gridBox.map((box) => {
                     return (box)

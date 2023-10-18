@@ -21,31 +21,71 @@ const projects = [
     }
 ]
 
-const Project = () => {
+const Project = ({windowSize}) => {
 
     const [isHovered, setIsHovered] = useState(-1)
     const handleMouseEnter = (index) => {setIsHovered(index)}
     const handleMouseLeave = () => {setIsHovered(-1)}
 
     return(
-        <div id="project" className='bg-transparent w-full h-full px-8 py-8'>
-            <h2 className='text-[#B000B0] font-bold'>RECENT PROJECTS</h2>
-            {/* <MyCarousel screenSize={screenSize}/> */}
-            <div className='flex flex-col justify-evenly h-[90%] px-1 py-2'>
-                {projects.map((project, index) => {
-                    return(
-                        <a href={project.projectLink} target='_blank' className={'rounded-lg px-3 py-2 shadow-[0px_5px_10px_-5px_rgb(0,0,0)] no-underline text-white transition-all duration-500 ease-in-out ' + (isHovered === index? "-translate-x-2 -translate-y-2 bg-[#800080] shadow-[5px_5px_15px_0px_rgb(16,0,16)]":"")}
-                            onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave()}>
-                            <div className={'text-md font-bold text-white'}>{project.title}</div>
-                            <div className='text-xs font-light'>{project.description}</div>
-                            <div className='h-3'></div>
-                            <div className='text-xs font-light'>Skills: {project.skills}</div>
-                        </a>
-                    )
-                })}
+        windowSize.innerWidth > 1280?
+        (
+            <div id="project" className='bg-transparent w-full h-full px-8 py-8'>
+                <h2 className='text-[#B000B0] font-bold'>RECENT PROJECTS</h2>
+                <div className='flex flex-col justify-evenly h-[90%] px-1 py-2'>
+                    {projects.map((project, index) => {
+                        return(
+                            <a href={project.projectLink} target='_blank' className={'rounded-lg px-3 py-2 shadow-[0px_5px_10px_-5px_rgb(0,0,0)] no-underline text-white transition-all duration-500 ease-in-out ' + (isHovered === index? "-translate-x-2 -translate-y-2 bg-[#800080] shadow-[5px_5px_15px_0px_rgb(16,0,16)]":"")}
+                                onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave()}>
+                                <div className={'text-md font-bold text-white'}>{project.title}</div>
+                                <div className='text-xs font-light'>{project.description}</div>
+                                <div className='h-3'></div>
+                                <div className='text-xs font-light'>Skills: {project.skills}</div>
+                            </a>
+                        )
+                    })}
+                </div>
             </div>
-            
-        </div>
+        )
+        :
+        windowSize.innerWidth > 640?
+        (
+            <div id="project" className='bg-transparent w-full h-full px-8 py-8'>
+                <h2 className='text-[#B000B0] font-bold text-2xl'>RECENT PROJECTS</h2>
+                <div className='flex flex-col h-[90%] px-1 py-2'>
+                    {projects.map((project, index) => {
+                        return(
+                            <a href={project.projectLink} target='_blank' className={'rounded-lg my-2 px-3 py-2 shadow-[0px_5px_10px_-5px_rgb(0,0,0)] no-underline text-white transition-all duration-500 ease-in-out ' + (isHovered === index? "-translate-x-2 -translate-y-2 bg-[#800080] shadow-[5px_5px_15px_0px_rgb(16,0,16)]":"")}
+                                onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave()}>
+                                <div className={'text-md font-bold text-white'}>{project.title}</div>
+                                <div className='text-xs font-light'>{project.description}</div>
+                                <div className='h-3'></div>
+                                <div className='text-xs font-light'>Skills: {project.skills}</div>
+                            </a>
+                        )
+                    })}
+                </div>
+            </div>        
+        )
+        :
+        (
+            <div id="project" className='bg-transparent w-full h-full px-6 py-6'>
+                <h2 className='text-[#B000B0] font-bold text-2xl'>RECENT PROJECTS</h2>
+                <div className='flex flex-col h-[90%] px-1 py-2'>
+                    {projects.map((project, index) => {
+                        return(
+                            <a href={project.projectLink} target='_blank' className={'rounded-lg my-2 px-3 py-2 shadow-[0px_5px_10px_-5px_rgb(0,0,0)] no-underline text-white transition-all duration-500 ease-in-out ' + (isHovered === index? "-translate-x-2 -translate-y-2 bg-[#800080] shadow-[5px_5px_15px_0px_rgb(16,0,16)]":"")}
+                                onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave()}>
+                                <div className={'font-bold text-white text-xs'}>{project.title}</div>
+                                <div className='text-[0.6rem] font-light'>{project.description}</div>
+                                <div className='h-1'></div>
+                                <div className='text-[0.6rem] font-light'>Skills: {project.skills}</div>
+                            </a>
+                        )
+                    })}
+                </div>
+            </div>
+        )
     )
 }
 export default Project;
